@@ -1,39 +1,165 @@
-#post{
+#input{
+    position: absolute;
     display:  flex;
     flex-direction: column;
     width: 100%;
-   justify-content: center;
-   align-items: center;
+   justify-content:left;
+   align-items: left;
    margin: 0 auto;
    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-#postInput{
-    background-color:#eaedf5;
-    border-radius: 25px;
-    width: 40%;
-    padding: 30px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    text-align: center;
-   font-size: large;
-   border-color: darkgrey;
-  
-}
-#username{
-    background-color:#eaedf5;
-    border-radius: 15px;
-    width: 40%;
+
+#inputs{
+   
+    display: flex;
+    flex-direction: column;
+    width: 30%;
     padding: 10px 10px;
-    margin: 60px 0 10px;
-    box-sizing: border-box;
-    text-align: center;
+    margin: 0 0 0 15%;
+    text-align: left;
    font-size: large;
-   border-color: darkgrey;
 }
-#publicarBtn{ 
+
+#titulo{
+    margin: 10px 10px 10px 20%;
+}
+
+#username {
+    padding: 10px 10px;
+    margin: 10px 10px 10px ;
+    border-radius: 15px;
+    font-size: large;
+}
+
+
+#code{
+    padding: 10px 10px;
+    margin: 10px 10px 10px ;
+    border-radius: 15px;
+    font-size: large;
+}
+
+#curso{
+    padding: 10px 10px;
+    margin: 10px 10px 10px ;
+    border-radius: 15px;
+    font-size: large;
+}
+#matricularBtn{ 
+    position: relative;
+    bottom:  150px;
+    left: 55%;
     padding: 10px 10px;
     border-radius: 15px;
+    width: 20%;
     font-size: large;
     background-color: #5581cf;
     color: floralwhite;
+}
+#estudiantescard{
+    
+    position: absolute;
+    top: 50%;
+    display:  flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content:center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#estudiantesSinBono{
+
+    position: absolute;
+    top: 20px;
+   left: 10%;
+  
+    
+
+}
+#estudiantesBonoPlata{
+ position: absolute;
+ top: 20px;
+
+}
+
+#estudiantesBonoOro{
+ position: absolute;
+ top: 20 px;
+ right: 10%;
+ 
+ 
+}
+#sinBono{
+    padding-left: 60px;
+    padding-right: 60px;
+    border-radius: 10px;
+    background-color: #5581cf;
+    color: floralwhite;
+}
+#BonoPlata{
+    background-color: #5581cf;
+    color: floralwhite;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+}
+#BonoOro{
+    background-color: #5581cf;
+    color: floralwhite;
+    padding-left: 30px;
+      padding-right: 30px;
+      border-radius: 10px;
+}
+
+#contEstudiantes{
+    width: 120%;
+    background-color: rgb(253, 255, 255);
+    border-radius: 10px;
+    margin: 5px;
+    outline-style: solid;
+    outline-color:  darkgray;
+}
+#cursotxt{
+    color: rgb(180, 180, 180);
+    padding-left: 10px;
+    padding-top: 10px;
+}
+#nombretxt{
+    color: black;
+    justify-content: left;
+    padding-left: 10px;
+    margin: 0;
+    
+}
+#parttxt{
+    color: black;
+    justify-content: left;
+    padding-left: 10px;
+}
+
+#codetxt{
+    color: black;
+    justify-content: left;
+    padding-left: 10px;
+   
+}
+#botonSumar{
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+    padding-bottom: 0;
+    background-color: #5581cf;
+    border-radius: 40px;
+    height: 60px;
+    width: 60px;
+}
+#botonQuitar{
+    background-color: darkred;
+    border-radius: 40px;
+    position: absolute;
+  right: -40px;
+  bottom: 20px;
+    height: 60px;
+    width: 60px;
+
 }
