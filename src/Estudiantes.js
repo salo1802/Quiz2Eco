@@ -44,6 +44,11 @@ class Estudiantes{
             component.appendChild(botonSumar);
             component.appendChild(botonQuitar);
 
+            botonSumar.addEventListener('click', ()=>{
+               const database = firebase.database();
+               database.ref('Estudiantes/')
+            });
+
         return component;
     }
 

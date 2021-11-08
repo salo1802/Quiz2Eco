@@ -1,11 +1,4 @@
-import { initializeApp } from 'firebase/app';
-
-
-import { getFirebaseConfig } from './firebase-config';
-import { getDatabase, ref, set,child, onValue, push, get} from 'firebase/database';
-// Inicializar firebase
-const firebaseAppConfig = getFirebaseConfig();
-const firebaseApp = initializeApp(firebaseAppConfig);
+import {getDatabase,ref,child, update, remove, onValue,set} from "https://www.gstatic.com/firebasejs/9.3.0/firebase-database.js";
 const db = getDatabase();
 var listaestu = [];
 
@@ -34,7 +27,16 @@ onValue(dbRef, (snapshot) =>{
         console.log("nombre a verificar = "+pa.nombre);
         let newestu = pa.nombre+pa.curso;
         listaestu.push(newestu);
-        let estClass = new Estudiantes(pa.nombre,pa.curso,pa.code,pa.participacion);
+        let newname = pa.nombre;
+        let newcode = pa.code;
+        let newcurso = pa.curso;
+        let newpart = pa.participacion;
+        console.log(pa.nombre);
+        console.log(pa.curso);
+        console.log(pa.code);
+        console.log(pa.participacion);
+
+        let estClass = new Estudiantes(newname,newcurso,newcode,newpart);
         estudiantesCont.appendChild(estClass.loadEst());
     
     });
@@ -48,28 +50,23 @@ onValue(dbRef, (snapshot) =>{
 const matricularEvent = () => {
     
     if(listaestu.some(estu =>  estu == username.value+curso.value)){
-        alert("ese estudiante ya esta matricuado en ese curso");
+        alert("este estudiante ya esta matricuado en este curso");
         return;  }
 
 
     set(ref(db, "Estudiantes/"+code.value),{
         nombre: username.value,
-        code: code.value
+        code: code.value,
+        curso: curso.value,
+        participacion: 0
     }).then(()=>{
         
     }).catch((error)=>{
         alert("papi paso esto: "+ error);
     });
 
-    const newEst = {
-       
-        nombre: username.value,
-        code: code.value,
-        curso: curso.value,
-        participacion: 0
-    }
 
-
+/*
 
 const dbRef = ref(db, 'Estudiantes');
 onValue(dbRef, (snapshot) =>{
@@ -87,7 +84,7 @@ onValue(dbRef, (snapshot) =>{
 
     console.log("lista", data);
     });
-
+*/
 
 }
 
