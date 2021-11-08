@@ -1,20 +1,42 @@
-import {getDatabase,ref,child, update, remove, onValue,set} from "https://www.gstatic.com/firebasejs/9.3.0/firebase-database.js";
+import {getDatabase,ref,child, update, remove, onValue,set,get} from "https://www.gstatic.com/firebasejs/9.3.0/firebase-database.js";
 const db = getDatabase();
 var listaestu = [];
+var cards = [];
 
 
 const username = document.getElementById("username");
 const code = document.getElementById("code");
 const curso = document.getElementById("curso");
 const publicarBtn = document.getElementById("matricularBtn");
-const estudiantesCont = document.getElementById("estudianteCont");
 const snbn = document.getElementById("estudiantesSinBono");
 const bnplta = document.getElementById("estudiantesBonoPlata");
 const bnoro = document.getElementById("estudiantesBonoOro");
 
 
+const sumar = (p,cod,cur,nombre) =>{
+    
+    set(ref(db, "Estudiantes/"+cod),{
+        nombre: nombre,
+        code: cod,
+        curso: cur,
+        participacion: p
+    }).then(()=>{
+        
+    }).catch((error)=>{
+        alert("papi paso esto: "+ error);
+    });
+
+    location.reload();
+}
+
+const quitar = (c) =>{
+    remove(ref(db,"Estudiantes/"+c));
+    location.reload();
+}
+
 $(document).ready(function(){
 
+    console.log("reinicio");
 
     const dbRef = ref(db, 'Estudiantes');
 onValue(dbRef, (snapshot) =>{
@@ -36,19 +58,56 @@ onValue(dbRef, (snapshot) =>{
         console.log(pa.code);
         console.log(pa.participacion);
 
-        let estClass = new Estudiantes(newname,newcurso,newcode,newpart);
-        estudiantesCont.appendChild(estClass.loadEst());
+        let estClass = new Estudiantes(newname,newcurso,newcode,newpart,db);
+        console.log("objeto"+estClass);
+        cards.push(estClass);
+         
+        if(estClass.parti<6){
+            snbn.appendChild(estClass.loadEst());
+        }
+        if(estClass.parti>5&&estClass.parti<11){
+            bnplta.appendChild(estClass.loadEst());
+        }
+      if(estClass.parti>10){
+          bnoro.appendChild(estClass.loadEst());
+      }
+      
+  
+     
     
     });
 
-    console.log("lista", data);
+    console.log("lista", cards);
     });
+
+    
+    
+
 
 });
 
+document.onclick = function(){
+    cards.forEach((actual)=>{
+        console.log(actual.code);
+      if(actual.clickSumar==true){
+          
+          sumar(actual.parti,actual.code,actual.curso,actual.name);
+        
+      }
+      if(actual.clickQuitar==true){
+          quitar(actual.code);
+      }
+        
+       
+    });
+   // location.reload();
+}
 
 const matricularEvent = () => {
-    
+    if(username.value==""||code.value==""||curso.value==""){
+        alert("rellene todos los campos para matricular");
+        return; 
+    }
     if(listaestu.some(estu =>  estu == username.value+curso.value)){
         alert("este estudiante ya esta matricuado en este curso");
         return;  }
@@ -85,6 +144,9 @@ onValue(dbRef, (snapshot) =>{
     console.log("lista", data);
     });
 */
+
+location.reload();
+
 
 }
 

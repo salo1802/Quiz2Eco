@@ -1,20 +1,27 @@
-class Estudiantes{
 
-    constructor(name, curso, code,parti){
-        parti = 0;
+
+class Estudiantes{
+   
+
+    constructor(name, curso, code,parti,database){
         this.name = name;
-        this.content = curso;
+        this.curso = curso;
         this.code = code;
         this.parti = parti;
+        this.database = database;
+        this.clickSumar = false;
+        this.clickQuitar = false;
     }
 
+    
     loadEst = ()=>{
+      
         let component = document.createElement('div');
         component.className = 'contEstudiantes';
 
             
             let cursoConteiner = document.createElement('h2');
-            cursoConteiner.innerHTML = this.content;
+            cursoConteiner.innerHTML = this.curso;
             cursoConteiner.className = 'cursotxt';
 
             let nameConteiner = document.createElement('h3');
@@ -29,13 +36,13 @@ class Estudiantes{
             partConteiner.innerHTML = this.parti;
             partConteiner.className = 'parttxt';
 
-            let botonSumar = document.createElement('button');
+           let botonSumar = document.createElement('button');
             botonSumar.innerHTML = "+"
             botonSumar.className = 'botonSumar';
 
-            let botonQuitar = document.createElement('button');
-            botonQuitar.innerHTML = "X"
-            botonQuitar.className= 'botonQuitar';
+           let botonQuitar = document.createElement('button');
+           botonQuitar.innerHTML = "X"
+          botonQuitar.className= 'botonQuitar';
 
             component.appendChild(cursoConteiner);
             component.appendChild(nameConteiner);
@@ -45,12 +52,26 @@ class Estudiantes{
             component.appendChild(botonQuitar);
 
             botonSumar.addEventListener('click', ()=>{
-               const database = firebase.database();
-               database.ref('Estudiantes/')
+                this.clickSumar = true;
+                this.parti++;
+                partConteiner.innerHTML = this.parti; 
+               
             });
+
+           botonQuitar.addEventListener('click',()=>{
+            this.clickQuitar = true;
+               component.remove();
+            });
+
+            
+     
+     
+      
+      
 
         return component;
     }
+
 
 
 }

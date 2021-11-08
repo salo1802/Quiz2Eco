@@ -70,7 +70,7 @@
 #estudiantesSinBono{
 
     position: absolute;
-    top: 20px;
+    top: 60px;
    left: 10%;
   
     
@@ -78,18 +78,20 @@
 }
 #estudiantesBonoPlata{
  position: absolute;
- top: 20px;
+ top: 60px;
 
 }
 
 #estudiantesBonoOro{
  position: absolute;
- top: 20px;
+ top: 60px;
  right: 10%;
  
  
 }
 #sinBono{
+    position: absolute;
+   left: 10%;
     padding-left: 60px;
     padding-right: 60px;
     border-radius: 10px;
@@ -97,6 +99,7 @@
     color: floralwhite;
 }
 #BonoPlata{
+    position: absolute;
     background-color: #5581cf;
     color: floralwhite;
     padding-left: 30px;
@@ -104,6 +107,8 @@
     border-radius: 10px;
 }
 #BonoOro{
+    position: absolute;
+    right: 10%;
     background-color: #5581cf;
     color: floralwhite;
     padding-left: 30px;
